@@ -6,15 +6,18 @@ const body = document.body;
 
 // Load saved theme
 if (localStorage.getItem("theme") === "dark") {
-  body.classList.add("dark-mode");
+  body.classList.add("dark");
   themeToggle.textContent = "☀️";
+} else {
+  body.classList.remove("dark");
+  themeToggle.textContent = "🌙";
 }
 
 // Toggle theme
 themeToggle.addEventListener("click", () => {
-  body.classList.toggle("dark-mode");
+  body.classList.toggle("dark");
 
-  if (body.classList.contains("dark-mode")) {
+  if (body.classList.contains("dark")) {
     themeToggle.textContent = "☀️";
     localStorage.setItem("theme", "dark");
   } else {
@@ -32,26 +35,13 @@ document.querySelectorAll(".link-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const url = btn.getAttribute("data-url");
 
-    // Try iframe first
-    const iframe = document.createElement("iframe");
-    iframe.src = url;
-    iframe.width = "100%";
-    iframe.height = "100%";
-    iframe.style.border = "none";
-
-    // Clear old content
-    viewer.innerHTML = "";
-    viewer.appendChild(iframe);
-
-    // Handle blocked iframes
-    iframe.addEventListener("error", () => {
-      viewer.innerHTML = `
-        <div class="preview">
-          <h2>Preview Unavailable 🚫</h2>
-          <p>This site cannot be embedded here.</p>
-          <a href="${url}" target="_blank" class="open-btn">Open Site</a>
-        </div>
-      `;
-    });
+    // Build iframe preview
+    viewer.innerHTML = `
+      <div class="preview">
+        <h2>Preview</h2>
+        <iframe src="${url}" frameborder="0"></iframe>
+        <a href="${url}" target="_blank" class="open-btn">Open in New Tab</a>
+      </div>
+    `;
   });
 });

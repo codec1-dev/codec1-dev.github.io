@@ -23,6 +23,7 @@ body {
   --accent: #ff6600;
   --border: rgba(0, 0, 0, 0.1);
   --card-bg: rgba(255, 255, 255, 0.8);
+  --shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 body.dark {
@@ -32,6 +33,7 @@ body.dark {
   --accent: #ffcc00;
   --border: rgba(255, 255, 255, 0.1);
   --card-bg: rgba(0, 0, 0, 0.5);
+  --shadow: 0 4px 10px rgba(255,255,255,0.05);
 }
 
 /* ==== Layout ==== */
@@ -53,6 +55,7 @@ body.dark {
   position: sticky;
   top: 0;
   height: 100vh;
+  transition: background 0.3s, color 0.3s;
 }
 
 .sidebar .logo {
@@ -96,11 +99,12 @@ body.dark {
   color: var(--text);
   transition: all 0.3s ease;
   width: 100%;
+  box-shadow: var(--shadow);
 }
 
 .link-btn:hover {
   background: var(--accent);
-  color: #fff;
+  color: var(--bg);
   transform: translateX(5px);
 }
 
@@ -113,11 +117,12 @@ body.dark {
   margin-top: auto;
   padding: 0.6rem 1rem;
   background: var(--accent);
-  color: #fff;
+  color: var(--bg);
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, background 0.3s;
+  box-shadow: var(--shadow);
 }
 
 .theme-toggle:hover {
@@ -132,14 +137,17 @@ body.dark {
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  transition: background 0.3s, color 0.3s;
 }
 
 .viewer iframe {
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  border: 1px solid var(--border);
 }
 
+/* Preview Card */
 .preview {
   text-align: center;
   max-width: 500px;
@@ -147,6 +155,8 @@ body.dark {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: background 0.3s, color 0.3s;
 }
 
 .preview h2 {
@@ -158,7 +168,7 @@ body.dark {
   margin-top: 1rem;
   padding: 0.7rem 1.2rem;
   background: var(--accent);
-  color: #fff;
+  color: var(--bg);
   border-radius: 8px;
   text-decoration: none;
   transition: background 0.3s;
@@ -175,6 +185,7 @@ body.dark {
   border-top: 1px solid var(--border);
   background: var(--sidebar-bg);
   font-size: 0.9rem;
+  transition: background 0.3s, color 0.3s;
 }
 
 /* ==== Responsive ==== */
@@ -195,6 +206,7 @@ body.dark {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 0.5rem;
   }
 
   .viewer {
