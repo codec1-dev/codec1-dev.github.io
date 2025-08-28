@@ -1,56 +1,57 @@
-const toggleBtn = document.getElementById("theme-toggle");
+// =====================
+// Theme Toggle
+// =====================
+const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;
 
-// Check local storage for theme
+// Load saved theme
 if (localStorage.getItem("theme") === "dark") {
-  body.classList.add("dark");
-  toggleBtn.textContent = "☀️";
+  body.classList.add("dark-mode");
+  themeToggle.textContent = "☀️";
 }
 
-toggleBtn.addEventListener("click", () => {
-  body.classList.toggle("dark");
+// Toggle theme
+themeToggle.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
 
-  if (body.classList.contains("dark")) {
-    toggleBtn.textContent = "☀️";
+  if (body.classList.contains("dark-mode")) {
+    themeToggle.textContent = "☀️";
     localStorage.setItem("theme", "dark");
   } else {
-    toggleBtn.textContent = "🌙";
+    themeToggle.textContent = "🌙";
     localStorage.setItem("theme", "light");
   }
 });
 
- const links = document.querySelectorAll('.links a');
-    const viewer = document.getElementById('viewer');
+// =====================
+// Viewer (iframe preview)
+// =====================
+const viewer = document.getElementById("viewer");
 
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const url = link.getAttribute('data-url');
+document.querySelectorAll(".link-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const url = btn.getAttribute("data-url");
 
-        // Clear viewer
-        viewer.innerHTML = "";
+    // Try iframe first
+    const iframe = document.createElement("iframe");
+    iframe.src = url;
+    iframe.width = "100%";
+    iframe.height = "100%";
+    iframe.style.border = "none";
 
-        // Try loading iframe
-        const iframe = document.createElement('iframe');
-        iframe.src = url;
-        iframe.onload = () => {
-          viewer.innerHTML = "";
-          viewer.appendChild(iframe);
-        };
+    // Clear old content
+    viewer.innerHTML = "";
+    viewer.appendChild(iframe);
 
-        // If iframe fails (blocked by X-Frame-Options)
-        iframe.onerror = () => {
-          viewer.innerHTML = `
-            <div class="preview">
-              <h2>Preview not available</h2>
-              <p>This site doesn’t allow embedding.</p>
-              <a href="${url}" target="_blank">
-                <button class="btn-open">Open Site</button>
-              </a>
-            </div>
-          `;
-        };
-
-        viewer.appendChild(iframe);
-      });
+    // Handle blocked iframes
+    iframe.addEventListener("error", () => {
+      viewer.innerHTML = `
+        <div class="preview">
+          <h2>Preview Unavailable 🚫</h2>
+          <p>This site cannot be embedded here.</p>
+          <a href="${url}" target="_blank" class="open-btn">Open Site</a>
+        </div>
+      `;
     });
+  });
+});

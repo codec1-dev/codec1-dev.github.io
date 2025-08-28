@@ -10,51 +10,47 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <!-- Theme Toggle -->
-  <button id="theme-toggle" class="theme-toggle">🌙</button>
+ <!-- Main Wrapper -->
+  <div class="layout">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <img src="assets/logo.png" alt="Logo" class="logo">
+      <h1>CodecOne1</h1>
+      <p class="tagline">Code. Create. Connect.</p>
 
-  <!-- Header -->
-  <header class="header">
-    <img src="assets/logo.png" alt="Logo" class="logo">
-    <h1>CodecOne1</h1>
-    <p class="tagline">Code. Create. Connect.</p>
+      <nav class="links">
+        <button class="link-btn" data-url="https://codec-one1.blogspot.com">
+          <i class="fas fa-blog"></i> Blog
+        </button>
+        <button class="link-btn" data-url="https://github.com/codec1-dev">
+          <i class="fab fa-github"></i> GitHub
+        </button>
+        <button class="link-btn" data-url="https://www.linkedin.com/in/codec1-dev">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </button>
+        <button class="link-btn" data-url="https://www.instagram.com/codec.one1">
+          <i class="fab fa-instagram"></i> Instagram
+        </button>
+        <button class="link-btn" data-url="https://x.com/codec_one1">
+          <i class="fab fa-twitter"></i> Twitter
+        </button>
+        <button class="link-btn" data-url="https://youtube.com/@Codecone1">
+          <i class="fab fa-youtube"></i> YouTube
+        </button>
+      </nav>
 
-    
-  </header>
+      <!-- Theme Toggle -->
+      <button id="theme-toggle" class="theme-toggle">🌙</button>
+    </aside>
 
-  <!-- Main Content -->
-  <main class="container">
-     <!-- Left Side Links -->
-    <section class="links">
-      <a href="https://codec-one1.blogspot.com" target="_blank">
-        <i class="fas fa-blog"></i> Blog
-      </a>
-      <a href="https://github.com/codec1-dev" target="_blank">
-        <i class="fab fa-github"></i> GitHub
-      </a>
-        <a href="https://www.linkedin.com/in/codec1-dev" target="_blank">
-            <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-      <a href="https://www.instagram.com/codec.one1" target="_blank">
-        <i class="fab fa-instagram"></i> Instagram  
-        </a>
-      <a href="https://x.com/codec_one1" target="_blank">
-        <i class="fab fa-twitter"></i> Twitter
-      </a>
-      <a href="https://youtube.com/@Codecone1" target="_blank">
-        <i class="fab fa-youtube"></i> YouTube
-      </a>
-
-    </section>
-
-     <!-- Right Side Viewer -->
-    <section class="viewer" id="viewer">
+    <!-- Right Viewer -->
+    <main class="viewer" id="viewer">
       <div class="preview">
         <h2>Welcome 👋</h2>
         <p>Select a link from the left to preview here.</p>
       </div>
-    </section>
-  </main>
+    </main>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
